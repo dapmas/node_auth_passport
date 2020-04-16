@@ -1,13 +1,26 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-
+const mongoose = require('mongoose');
+const config = require('./config/config');
 const Logger = require('./lib/Logger');
 
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const logger = new Logger('main');
 
-const app = express();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const PORT = process.env.PORT;
+
+const app = express();
+
+const dbOptions = config.dbOptions;
+
+// DB config
+const mongoURI = dbOptions.MongoURI;
+
+// Connect to Mongo Atlas
+mongoose
+  .connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log('Mongo DB connected...'))
+  .catch((error) => console.log(error));
 
 // EjS Middleware
 app.use(expressLayouts);
