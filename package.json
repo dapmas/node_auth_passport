@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "DEBUG=${DEBUG:='*INFO* *WARN* *ERROR*'} nodemon app.js"
   },
   "keywords": [
     "nodejs",
@@ -26,6 +26,8 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.3"
   }
 }
