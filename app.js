@@ -9,6 +9,7 @@ const PORT = process.env.PORT;
 
 // Routes
 app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
 app.listen(PORT, () => {
   logger.info(`Server running on port:${PORT}`);
