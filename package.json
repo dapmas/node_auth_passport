@@ -17,10 +17,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "ejs": "^3.0.2",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
+    "express-handlebars": "^4.0.3",
     "express-session": "^1.17.0",
+    "handlebars": "^4.7.6",
     "mongoose": "^5.9.9",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"

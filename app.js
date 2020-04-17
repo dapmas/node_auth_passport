@@ -1,5 +1,5 @@
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
+const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const config = require('./config/config');
 const Logger = require('./lib/Logger');
@@ -22,9 +22,9 @@ mongoose
   .then(() => console.log('Mongo DB connected...'))
   .catch((error) => console.log(error));
 
-// EjS Middleware
-app.use(expressLayouts);
-app.set('view engine', 'ejs');
+// Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false }));
