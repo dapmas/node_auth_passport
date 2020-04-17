@@ -76,6 +76,8 @@ router.post('/register', (req, res) => {
               newUser
                 .save()
                 .then((user) => {
+                  // add flash message
+                  req.flash('success_msg', 'You are now registered');
                   // got the user. redirect to login page
                   res.redirect('/users/login');
                 })
