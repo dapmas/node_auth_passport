@@ -1,2 +1,19 @@
-<% if (typeof errors !=== 'undefined') { %> <%- errors.forEach(error => { %> <%=
-error.msg %> <%- }); %> <% } %>
+{{#if errorsPresent}}
+  {{#each errors}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>
+        {{this.msg}}
+      </strong>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">
+          ×
+        </span>
+      </button>
+    </div>
+  {{/each}}
+{{/if}}
