@@ -1,7 +1,7 @@
 {
-  "name": "node_passport_login",
+  "name": "node_auth_passport",
   "version": "1.0.0",
-  "description": "",
+  "description": "Authentication in nodejs using passport and mongoDB",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -10,7 +10,8 @@
   "keywords": [
     "nodejs",
     "passport",
-    "mongoDB"
+    "mongoDB",
+    "handlebars"
   ],
   "author": "Sampad Medda",
   "license": "ISC",
