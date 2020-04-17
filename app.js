@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 const config = require('./config/config');
 const Logger = require('./lib/Logger');
 
@@ -12,6 +13,9 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const PORT = process.env.PORT;
 
 const app = express();
+
+// Setup passport config
+require('./lib/passport')(passport);
 
 const dbOptions = config.dbOptions;
 
@@ -40,6 +44,10 @@ app.use(
   })
 );
 
+// passport Middleware initialize => to be put right after express session
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Connect Flash Middleware
 app.use(flash());
 
@@ -47,6 +55,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 
